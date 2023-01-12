@@ -5,7 +5,10 @@ from apps.sync_app import router as sync_router
 
 
 def create_app() -> FastAPI:
-    routers: tuple = (async_router, sync_router,)
+    routers: tuple[APIRouter, APIRouter] = (
+        async_router,
+        sync_router,
+    )
     app: "FastAPI" = FastAPI()
     router: "APIRouter" = APIRouter(prefix="/api")
     [router.include_router(app_router) for app_router in routers]

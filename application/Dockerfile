@@ -1,7 +1,6 @@
 FROM python:3.10-alpine
 
-WORKDIR /usr/src/calc
-
+WORKDIR /usr/src/application
 ENV PYTHONDONTWRITEBYTECODE 1 \
     PYTHONUNBUFFERED 1
 

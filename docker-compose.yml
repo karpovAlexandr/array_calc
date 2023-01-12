@@ -2,13 +2,14 @@ services:
   app:
     build: ./application
     stop_signal: SIGKILL
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
-    environment:
-      - SERVER_PORT:5000
+    command: uvicorn main:app --host 0.0.0.0 --port 5000
+
     depends_on:
       - postgres
-    expose:
-      - 8000
+    environment:
+      - SERVER_PORT:5000
+    ports:
+      - "5000:5000"
     volumes:
       - ./application:/usr/src/application
     networks:
@@ -27,7 +28,7 @@ services:
       - network
 
 volumes:
-  postgres_data:
+  pg_data:
 
 networks:
   network:
