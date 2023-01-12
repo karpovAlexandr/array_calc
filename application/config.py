@@ -1,0 +1,5 @@
+ARRAY_KEY_NAME = "array"
+SECRET_KEY = "im-dont-want-to-use-dot-env"
+DB_NAME = "calc"
+DB_USER = "admin"
+DB_PASSWORD = "admin"

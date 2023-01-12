@@ -1,0 +1,34 @@
+services:
+  app:
+    build: ./application
+    stop_signal: SIGKILL
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    environment:
+      - SERVER_PORT:5000
+    depends_on:
+      - postgres
+    expose:
+      - 8000
+    volumes:
+      - ./application:/usr/src/application
+    networks:
+      - network
+
+
+  postgres:
+    image: postgres
+    env_file:
+      - ./.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
+    networks:
+      - network
+
+volumes:
+  postgres_data:
+
+networks:
+  network:
+    driver: bridge
