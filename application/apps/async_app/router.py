@@ -17,7 +17,6 @@ async def async_calculate(data: ArrayDataIn, background_tasks: BackgroundTasks):
     :param data: array data
     :return: SessionIdOut schema
     """
-    print(data)
     nums: list = getattr(data, ARRAY_KEY_NAME)
     session_id: str = generate_str_uuid()
     background_tasks.add_task(async_calculate_task, session_id, nums)
